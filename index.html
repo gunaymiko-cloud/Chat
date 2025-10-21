@@ -26,11 +26,24 @@
                 <div id="usersList"></div>
             </div>
             
-            <div class="chat-messages" id="chatMessages"></div>
-            
-            <div class="message-input">
-                <input type="text" id="messageInput" placeholder="Напишите сообщение..." maxlength="500">
-                <button onclick="sendMessage()">📤</button>
+            <div class="chat-content">
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Сообщения будут здесь -->
+                </div>
+                
+                <div class="message-input-container">
+                    <div class="message-input">
+                        <input type="text" id="messageInput" placeholder="Напишите сообщение..." maxlength="500">
+                        <button onclick="sendMessage()">📤</button>
+                    </div>
+                    <div class="input-actions">
+                        <button class="action-btn" onclick="addEmoji('😊')">😊</button>
+                        <button class="action-btn" onclick="addEmoji('😂')">😂</button>
+                        <button class="action-btn" onclick="addEmoji('❤️')">❤️</button>
+                        <button class="action-btn" onclick="addEmoji('👍')">👍</button>
+                        <button class="action-btn" onclick="toggleFormatting()">B</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
