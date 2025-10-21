@@ -99,7 +99,7 @@ function updateOnlineUsers() {
     const usersList = document.getElementById('usersList');
     const onlineCount = document.getElementById('onlineCount');
     
-    const users = [currentUser, 'Друг_1', 'Друг_2', 'Подруга_1'];
+    const users = [currentUser, 'Максим', 'Саша', 'Маша'];
     
     usersList.innerHTML = '';
     users.forEach(user => {
@@ -183,4 +183,5 @@ function simulateMessageReceiving(data) {
 
 // Автопрокрутка при загрузке
 window.addEventListener('load', scrollToBottom);
+
 
