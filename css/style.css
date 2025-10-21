@@ -30,6 +30,7 @@ body {
     color: white;
     padding: 20px;
     text-align: center;
+    flex-shrink: 0;
 }
 
 .login-screen {
@@ -75,6 +76,7 @@ body {
 .chat-main {
     display: flex;
     flex: 1;
+    overflow: hidden;
 }
 
 .online-users {
@@ -82,6 +84,8 @@ body {
     background: #f7fafc;
     border-right: 2px solid #e2e8f0;
     padding: 20px;
+    flex-shrink: 0;
+    overflow-y: auto;
 }
 
 .online-users h3 {
@@ -93,38 +97,33 @@ body {
     color: #718096;
 }
 
+.chat-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0; /* Важно для flexbox с overflow */
+}
+
 .chat-messages {
     flex: 1;
     padding: 20px;
     overflow-y: auto;
     background: #edf2f7;
+    display: flex;
+    flex-direction: column;
 }
 
-.message {
+/* Контейнер для поля ввода закреплен внизу */
+.message-input-container {
     background: white;
-    padding: 12px 15px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.message-sender {
-    font-weight: bold;
-    color: #667eea;
-    margin-bottom: 5px;
-}
-
-.message-time {
-    font-size: 12px;
-    color: #a0aec0;
-    margin-left: 10px;
+    border-top: 2px solid #e2e8f0;
+    padding: 15px 20px;
+    flex-shrink: 0;
 }
 
 .message-input {
     display: flex;
-    padding: 20px;
-    background: white;
-    border-top: 2px solid #e2e8f0;
+    margin-bottom: 10px;
 }
 
 .message-input input {
@@ -134,6 +133,9 @@ body {
     border-radius: 8px;
     margin-right: 10px;
     font-size: 16px;
+    resize: vertical;
+    min-height: 50px;
+    max-height: 120px;
 }
 
 .message-input button {
@@ -144,13 +146,131 @@ body {
     border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
+    align-self: flex-end;
 }
 
 .message-input button:hover {
     background: #5a6fd8;
 }
 
+.input-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.action-btn {
+    background: #e2e8f0;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.action-btn:hover {
+    background: #cbd5e0;
+}
+
+.message {
+    background: white;
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.own-message {
+    background: #e6fffa;
+    align-self: flex-end;
+}
+
+.other-message {
+    background: white;
+    align-self: flex-start;
+}
+
+.message-sender {
+    font-weight: bold;
+    color: #667eea;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.message-time {
+    font-size: 12px;
+    color: #a0aec0;
+    font-weight: normal;
+}
+
+.message-text {
+    line-height: 1.4;
+}
+
+.system-message {
+    background: #fffaf0;
+    text-align: center;
+    color: #d69e2e;
+    align-self: center;
+    max-width: 60%;
+}
+
 .user-item {
     padding: 8px 0;
     border-bottom: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+}
+
+.user-item::before {
+    content: "👤";
+    margin-right: 8px;
+}
+
+.user-item.own-user::before {
+    content: "👑";
+}
+
+/* Стили для эмодзи в сообщениях */
+.emoji {
+    font-size: 1.2em;
+    margin: 0 2px;
+}
+
+/* Анимация для новых сообщений */
+@keyframes messageSlide {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message {
+    animation: messageSlide 0.3s ease-out;
+}
+
+/* Полоса прокрутки */
+.chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
 }
