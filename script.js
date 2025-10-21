@@ -99,7 +99,7 @@ function updateOnlineUsers() {
     const usersList = document.getElementById('usersList');
     const onlineCount = document.getElementById('onlineCount');
     
-    const users = [currentUser, 'Максим', 'Саша', 'Маша'];
+    const users = [currentUser, 'Папа', 'Мама', 'Джавид'];
     
     usersList.innerHTML = '';
     users.forEach(user => {
@@ -174,7 +174,7 @@ function simulateMessageReceiving(data) {
             ];
             
             const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-            const randomUser = ['Максим', 'Саша', 'Маша'][Math.floor(Math.random() * 3)];
+            const randomUser = ['Папа', 'Мама', 'Джавид'][Math.floor(Math.random() * 3)];
             
             addMessage(randomUser, randomResponse);
         }, 1000 + Math.random() * 3000);
@@ -183,5 +183,6 @@ function simulateMessageReceiving(data) {
 
 // Автопрокрутка при загрузке
 window.addEventListener('load', scrollToBottom);
+
 
 
