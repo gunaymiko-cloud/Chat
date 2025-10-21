@@ -174,7 +174,7 @@ function simulateMessageReceiving(data) {
             ];
             
             const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-            const randomUser = ['Друг_1', 'Друг_2', 'Подруга_1'][Math.floor(Math.random() * 3)];
+            const randomUser = ['Максим', 'Саша', 'Маша'][Math.floor(Math.random() * 3)];
             
             addMessage(randomUser, randomResponse);
         }, 1000 + Math.random() * 3000);
@@ -183,3 +183,4 @@ function simulateMessageReceiving(data) {
 
 // Автопрокрутка при загрузке
 window.addEventListener('load', scrollToBottom);
+
